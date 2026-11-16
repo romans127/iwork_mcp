@@ -20,21 +20,21 @@ describe("Tool Registration", () => {
     assert.ok(instructions.includes("iWork"), "Instructions should mention iWork");
   });
 
-  it("registers all 125 tools", async () => {
+  it("registers all 131 tools", async () => {
     const { tools } = await ctx.client.listTools();
-    assert.equal(tools.length, 125);
+    assert.equal(tools.length, 131);
   });
 
-  it("registers 50 Numbers tools", async () => {
+  it("registers 53 Numbers tools", async () => {
     const { tools } = await ctx.client.listTools();
     const numbers = tools.filter((t) => t.name.startsWith("numbers_"));
-    assert.equal(numbers.length, 50);
+    assert.equal(numbers.length, 53);
   });
 
-  it("registers 26 Pages tools", async () => {
+  it("registers 29 Pages tools", async () => {
     const { tools } = await ctx.client.listTools();
     const pages = tools.filter((t) => t.name.startsWith("pages_"));
-    assert.equal(pages.length, 26);
+    assert.equal(pages.length, 29);
   });
 
   it("registers 49 Keynote tools", async () => {

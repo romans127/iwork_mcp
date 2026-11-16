@@ -1,6 +1,6 @@
 # iwork-mcp
 
-An agent-neutral MCP server for automating Numbers, Pages, and Keynote on macOS. It exposes 125 tools over local stdio or authenticated Streamable HTTP.
+An agent-neutral MCP server for automating Numbers, Pages, and Keynote on macOS. It exposes 131 tools over local stdio or authenticated Streamable HTTP.
 
 ![Numbers dashboard](screenshots/numbers-dashboard.jpg)
 
@@ -162,7 +162,7 @@ curl -i -X POST http://127.0.0.1:8787/mcp \
   -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"review","version":"1"}}}'
 ```
 
-Copy the `mcp-session-id` response header, send an `notifications/initialized` notification, then call `tools/list` with the same bearer token and session header. The automated test performs this complete sequence and verifies that HTTP returns the same 125 tools as stdio.
+Copy the `mcp-session-id` response header, send an `notifications/initialized` notification, then call `tools/list` with the same bearer token and session header. The automated test performs this complete sequence and verifies that HTTP returns the same 131 tools as stdio.
 
 ## Security and limitations
 
@@ -172,3 +172,7 @@ Copy the `mcp-session-id` response header, send an `notifications/initialized` n
 The HTTP server defaults to `127.0.0.1`. Keep it on loopback behind an HTTPS tunnel, set `IWORK_MCP_PUBLIC_URL` to the exact external origin, use a strong owner passphrase, and never store secrets in the repository. OAuth state is stored in the current user's data directory with mode `0600`; the passphrase hash is stored separately in the current user's configuration directory.
 
 iWork's scripting dictionaries determine what can be automated. Some application features are unavailable or require macOS Accessibility permission.
+
+## Romans127 comment tools
+
+This fork adds native Pages and Numbers comment reading, creation, and replies through macOS Accessibility. See [comment tool requirements and limitations](docs/comments.md).

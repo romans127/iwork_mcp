@@ -3,6 +3,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { registerNumbersTools } from "./tools/numbers.js";
 import { registerPagesTools } from "./tools/pages.js";
 import { registerKeynoteTools } from "./tools/keynote.js";
+import { registerCommentTools } from "./tools/comments.js";
 import { INSTRUCTIONS } from "./instructions.js";
 
 const require = createRequire(import.meta.url);
@@ -42,5 +43,6 @@ export function createIWorkServer(options: { platform?: NodeJS.Platform; name?: 
   registerNumbersTools(server);
   registerPagesTools(server);
   registerKeynoteTools(server);
+  registerCommentTools(server);
   return server;
 }
